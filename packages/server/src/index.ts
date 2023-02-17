@@ -11,11 +11,7 @@ app.use(cors())
 app.get('/influencers', async (_, res, next) => {
   const filePath = path.resolve(__dirname, '../data/influencers.csv')
   try {
-    const data = await csv()
-      .subscribe(obj => {
-        obj.id = obj['Influencer insta name']
-      })
-      .fromFile(filePath)
+    const data = await csv().fromFile(filePath)
     res.json(data)
   } catch (err) {
     next(err)

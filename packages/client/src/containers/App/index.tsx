@@ -1,20 +1,18 @@
 import React from 'react'
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
+import {
+  ChakraProvider,
+  Box,
+  Grid,
+  theme,
+} from '@chakra-ui/react'
 import Influencers from '../Influencers'
 
-const App = () => (
-  <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" gutterBottom>
-          Material UI Create React App example in TypeScript
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-      <Influencers />
-    </Container>
-  </Box>
+export const App = () => (
+  <ChakraProvider theme={theme}>
+    <Box textAlign="center" fontSize="xl">
+      <Grid minH="100vh" p={3}>
+        <Influencers />
+      </Grid>
+    </Box>
+  </ChakraProvider>
 )
-
-export default App

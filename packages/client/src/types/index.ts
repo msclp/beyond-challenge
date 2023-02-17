@@ -9,4 +9,3 @@ export type Influencer = {
   ["Engagement avg"]: string
   ["id"]: string
 }
-

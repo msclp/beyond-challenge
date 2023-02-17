@@ -1,23 +1,45 @@
-import React, { useState } from 'react'
-import { Box, Card, CardBody, Flex, Heading, Link, ListItem, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text, UnorderedList } from '@chakra-ui/react'
-import { useApi } from '../../api'
-import { Influencer } from '../../types'
-import { getTopPerCountry, getTopPerCategory } from './utils'
+import React, { useState } from 'react';
+import {
+  Box,
+  Card,
+  CardBody,
+  Flex,
+  Heading,
+  Link,
+  ListItem,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  UnorderedList,
+} from '@chakra-ui/react';
+import { useApi } from '../../api';
+import { Influencer } from '../../types';
+import { getTopPerCountry, getTopPerCategory } from './utils';
 
 const Influencers = () => {
-  const { data, loading } = useApi<Influencer[]>('/influencers')
-  const [selectedInfluencer, selectInfluencer] = useState<Influencer>()
+  const { data, loading } = useApi<Influencer[]>('/influencers');
+  const [selectedInfluencer, selectInfluencer] = useState<Influencer>();
 
-  if (loading || !data) return null
+  if (loading || !data) return null;
 
-  const perCountry = getTopPerCountry(data)
-  const perCategory = getTopPerCategory(data)
+  const perCountry = getTopPerCountry(data);
+  const perCategory = getTopPerCategory(data);
 
   return (
-    <Tabs onChange={() => { selectInfluencer(undefined) }}>
+    <Tabs
+      onChange={() => {
+        selectInfluencer(undefined);
+      }}
+    >
       <TabList>
         <Tab>Who are the #1 top influencers per category, by followers?</Tab>
-        <Tab>Who are the #1 top influencers per country, by engagement avg?</Tab>
+        <Tab>
+          Who are the #1 top influencers per country, by engagement avg?
+        </Tab>
       </TabList>
 
       <TabPanels>
@@ -25,18 +47,27 @@ const Influencers = () => {
           <Flex alignItems="flex-start">
             <UnorderedList>
               {perCategory.map(({ category, influencer }) => (
-                <Link key={category} onClick={() => { selectInfluencer(influencer)}}>
+                <Link
+                  key={category}
+                  onClick={() => {
+                    selectInfluencer(influencer);
+                  }}
+                >
                   <ListItem>{category || 'Uncategorized'}</ListItem>
                 </Link>
               ))}
             </UnorderedList>
             {selectedInfluencer && (
               <Box p="32">
-                <Card maxW='sm'>
+                <Card maxW="sm">
                   <CardBody>
-                    <Stack mt='6' spacing='3'>
-                      <Heading size='md'>{selectedInfluencer['instagram name']}</Heading>
-                      <Text>Number of followers: {selectedInfluencer.Followers}</Text>
+                    <Stack mt="6" spacing="3">
+                      <Heading size="md">
+                        {selectedInfluencer['instagram name']}
+                      </Heading>
+                      <Text>
+                        Number of followers: {selectedInfluencer.Followers}
+                      </Text>
                     </Stack>
                   </CardBody>
                 </Card>
@@ -48,18 +79,28 @@ const Influencers = () => {
           <Flex alignItems="flex-start">
             <UnorderedList>
               {perCountry.map(({ category, influencer }) => (
-                <Link key={category} onClick={() => { selectInfluencer(influencer)}}>
+                <Link
+                  key={category}
+                  onClick={() => {
+                    selectInfluencer(influencer);
+                  }}
+                >
                   <ListItem>{category}</ListItem>
                 </Link>
               ))}
             </UnorderedList>
             {selectedInfluencer && (
               <Box p="32">
-                <Card maxW='sm'>
+                <Card maxW="sm">
                   <CardBody>
-                    <Stack mt='6' spacing='3'>
-                      <Heading size='md'>{selectedInfluencer['instagram name']}</Heading>
-                      <Text>Average engagement: {selectedInfluencer['Engagement avg']}</Text>
+                    <Stack mt="6" spacing="3">
+                      <Heading size="md">
+                        {selectedInfluencer['instagram name']}
+                      </Heading>
+                      <Text>
+                        Average engagement:{' '}
+                        {selectedInfluencer['Engagement avg']}
+                      </Text>
                     </Stack>
                   </CardBody>
                 </Card>
@@ -67,10 +108,9 @@ const Influencers = () => {
             )}
           </Flex>
         </TabPanel>
-        
       </TabPanels>
     </Tabs>
-  )
-}
+  );
+};
 
-export default Influencers
+export default Influencers;

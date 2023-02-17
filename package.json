@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "start": "lerna run start"
+    "start": "lerna run start",
+    "prettier:write": "prettier 'packages/**/*.{ts,tsx}' --write"
   },
   "devDependencies": {
-    "lerna": "^6.5.1"
+    "lerna": "^6.5.1",
+    "prettier": "^2.8.4"
   },
   "workspaces": [
     "packages/*"

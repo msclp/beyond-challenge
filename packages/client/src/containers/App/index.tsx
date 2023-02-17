@@ -1,11 +1,6 @@
-import React from 'react'
-import {
-  ChakraProvider,
-  Box,
-  Grid,
-  theme,
-} from '@chakra-ui/react'
-import Influencers from '../Influencers'
+import React from 'react';
+import { ChakraProvider, Box, Grid, theme } from '@chakra-ui/react';
+import Influencers from '../Influencers';
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -15,4 +10,4 @@ export const App = () => (
       </Grid>
     </Box>
   </ChakraProvider>
-)
+);

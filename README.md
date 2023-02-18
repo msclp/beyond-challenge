@@ -7,7 +7,7 @@ Go to the project root and run
 - `yarn start`
 
 Backend API is sered on `http://localhost:4000/`,
-and frontend applpication is served on port `http:/localhost:3000/`
+and frontend applpication is served on `http:/localhost:3000/`
 
 Frontend should automatically open in a browser
 
